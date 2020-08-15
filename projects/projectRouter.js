@@ -2,6 +2,7 @@ const express = require("express");
 const project = require("../data/helpers/projectModel.js");
 const router = express.Router();
 
+// TODO add /:id to the get params
 router.get("/", (req, res) => {
   // NOTE: i'm fully aware that the way i wrote this code is bad 
   // practice but i couldn't think of another way to make it work in time
