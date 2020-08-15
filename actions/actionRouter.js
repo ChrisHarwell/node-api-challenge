@@ -3,7 +3,7 @@ const action = require("../data/helpers/actionModel.js");
 const router = express.Router();
 
 // TODO add /:id to the get params
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   action
     .get(id)
@@ -37,12 +37,13 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  action.remove(req.params.id).then((count) => {
+  const {id} = req.params;
+  action.remove(id).then((count) => {
       console.log(count);
     if (count > 0) {
-      res.status(200).json({ message: "The hub has been nuked" });
+      res.status(200).json({ message: "The action has been deleted" });
     } else {
-      res.status(404).json({ message: "The hub could not be found" });
+      res.status(404).json({ message: "The action could not be found" });
     }
   });
 });
